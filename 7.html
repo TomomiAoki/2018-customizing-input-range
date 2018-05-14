@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>demo 5</title>
+<style>
+/*
+ * ベース
+ */
+.Range {
+  -webkit-appearance: none;
+  width: 100%;
+}
+.Range:focus {
+  outline: 0;
+}
+
+/*
+ * Chrome・Safari (Edgeも一部認識する）
+ */
+/* サム */
+.Range::-webkit-slider-thumb {
+  /* サム共通 */
+  width: 20px;
+  height: 20px;
+  border: 2px solid #409eff;
+  border-radius: 100%;
+  background: #fff;
+  cursor: pointer;
+  /* 固有の対策  */
+  -webkit-appearance: none;
+  margin-top: -7px; /* A */
+}
+
+/*
+ * Firefox
+ */
+/* サム */
+.Range::-moz-range-thumb {
+  /* サム共通 */
+  width: 20px;
+  height: 20px;
+  border: 2px solid #409eff;
+  border-radius: 100%;
+  background: #fff;
+  cursor: pointer;
+}
+
+/*
+ * IE・Edge
+ */
+/* サム */
+.Range::-ms-thumb {
+  /* サム共通 */
+  width: 20px;
+  height: 20px;
+  border: 2px solid #409eff;
+  border-radius: 100%;
+  background: #fff;
+  cursor: pointer;
+  /* 固有の対策 */
+  margin-top: 0; /* Aの指定を打ち消す */
+}
+
+</style>
+</head>
+<body>
+
+
+
+
+<input class="Range" type="range">
+
+
+
+<hr>
+現在の値は<b></b>
+
+
+
+<script src="./script.js"></script>
+</body>
+</html>

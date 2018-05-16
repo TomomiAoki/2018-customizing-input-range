@@ -1,0 +1,116 @@
+$_thumb-size: 20px;
+$_thumb-border-size: 2px;
+$_thumb-theme-color: #409eff;
+$_thumb-theme-bg-color: #fff;
+
+$_track-width: 100%;
+$_track-height: 6px;
+$_track-border-radius: 4px;
+$_track-theme-color: #409eff;
+$_track-theme-color-focused: #78baff;
+$_track-theme-fill-lower: $_track-theme-color;
+$_track-theme-fill-lower-focused: $_track-theme-color-focused;
+$_track-theme-fill-upper: #ccc;
+$_track-theme-fill-upper-focused: #cfcfcf;
+
+@mixin _thumb {
+  width: $_thumb-size;
+  height: $_thumb-size;
+  border: $_thumb-border-size solid $_thumb-theme-color;
+  border-radius: 100%;
+  background: $_thumb-theme-bg-color;
+  cursor: pointer;
+}
+
+@mixin _track {
+  width: $_track-width;
+  height: $_track-height;
+  background: $_track-theme-color;
+  border-radius: $_track-border-radius;
+  cursor: pointer;
+}
+
+@mixin _focused_track {
+  background: $_track-theme-color-focused;
+}
+
+.Range {
+  //
+  // ベース
+  //
+  -webkit-appearance: none;
+  width: 100%;
+
+  &:focus {
+    outline: 0;
+  }
+
+  //
+  // Chrome・Safari (Edgeも一部認識する）
+  //
+  &::-webkit-slider-thumb {
+    @include _thumb;
+    -webkit-appearance: none;
+    margin-top: -7px;
+  }
+
+  &::-webkit-slider-runnable-track {
+    @include _track;
+    border: 0;
+  }
+
+  &:focus::-webkit-slider-runnable-track {
+    @include _focused_track;
+  }
+
+  //
+  // Firefox
+  //
+  &::-moz-range-thumb {
+    @include _thumb;
+  }
+
+  &::-moz-range-track {
+    @include _track;
+  }
+
+  &:focus::-moz-range-track {
+    @include _focused_track;
+  }
+
+  //
+  // IE・Edge
+  //
+  &::-ms-thumb {
+    @include _thumb;
+    margin-top: 0;
+  }
+
+  &::-ms-track {
+    @include _track;
+    background: transparent;
+    border-color: transparent;
+    border-width: $_thumb-size 0; // 20px = サムの幅
+    color: transparent;
+  }
+
+  // 最小値から現在の値までのバーの部分を表す疑似要素
+  &::-ms-fill-lower {
+    border-radius: $_track-border-radius;
+    background: $_track-theme-fill-lower;
+  }
+
+  &:focus::-ms-fill-lower {
+    background: $_track-theme-fill-lower-focused;
+  }
+
+  // 最大値から現在の値までのバーの部分を表す疑似要素
+  &::-ms-fill-upper {
+    border-radius: $_track-border-radius;
+    background: $_track-theme-fill-upper;
+  }
+
+  &:focus::-ms-fill-upper {
+    background: $_track-theme-fill-upper-focused;
+  }
+}

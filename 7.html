@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>demo 5</title>
+<title>demo 7</title>
 <style>
 /*
  * ベース
@@ -63,18 +63,28 @@
   margin-top: 0; /* Aの指定を打ち消す */
 }
 
+div {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
 </style>
 </head>
 <body>
 
 
 
-現在の値は<b></b>
-<hr>
-<input class="Range" type="range">
+<h2>スタイルを当てていないレンジ入力欄</h2>
+<div>
+  <input type="range">
+</div>
+
+<h2>ベースとサムのスタイルを当てたレンジ入力欄</h2>
+<div>
+  <input class="Range" type="range">
+</div>
 
 
 
-<script src="./script.js"></script>
 </body>
 </html>
